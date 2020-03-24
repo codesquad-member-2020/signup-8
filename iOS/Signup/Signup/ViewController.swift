@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet var labels: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,9 @@ class ViewController: UIViewController {
         setBorder(view: passwordConfirmTextField, color: .gray, width: 1)
         setBorder(view: nameTextField, color: .gray, width: 1)
         setBorder(view: nextButton, color: .gray, width: 1)
+        labels.forEach{
+            $0.alpha = 0
+        }
     }
     
     private func setBorder(view: UIView, color: UIColor, width: CGFloat) {
