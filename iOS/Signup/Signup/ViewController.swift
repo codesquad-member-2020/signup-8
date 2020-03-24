@@ -10,8 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var IDTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordConfirmTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
+    }
+    
+    private func setUI() {
+        setBorder(view: IDTextField, color: .gray, width: 1)
+        setBorder(view: passwordTextField, color: .gray, width: 1)
+        setBorder(view: passwordConfirmTextField, color: .gray, width: 1)
+        setBorder(view: nameTextField, color: .gray, width: 1)
+        setBorder(view: nextButton, color: .gray, width: 1)
+    }
+    
+    private func setBorder(view: UIView, color: UIColor, width: CGFloat) {
+        view.layer.borderColor = color.cgColor
+        view.layer.borderWidth = width
+        guard let textField = view as? UITextField else {return}
+        textField.borderStyle = .line
     }
 }
 
