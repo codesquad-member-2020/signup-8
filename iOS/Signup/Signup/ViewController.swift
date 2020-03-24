@@ -23,21 +23,14 @@ class ViewController: UIViewController {
     }
     
     private func setUI() {
-        setBorder(view: IDTextField, color: .gray, width: 1)
-        setBorder(view: passwordTextField, color: .gray, width: 1)
-        setBorder(view: passwordConfirmTextField, color: .gray, width: 1)
-        setBorder(view: nameTextField, color: .gray, width: 1)
-        setBorder(view: nextButton, color: .gray, width: 1)
+        IDTextField.setBorder(color: .gray, width: 1)
+        passwordTextField.setBorder(color: .gray, width: 1)
+        passwordConfirmTextField.setBorder(color: .gray, width: 1)
+        nameTextField.setBorder(color: .gray, width: 1)
+        nextButton.setBorder(color: .gray, width: 1)
         labels.forEach{
             $0.alpha = 0
         }
-    }
-    
-    private func setBorder(view: UIView, color: UIColor, width: CGFloat) {
-        view.layer.borderColor = color.cgColor
-        view.layer.borderWidth = width
-        guard let textField = view as? UITextField else {return}
-        textField.borderStyle = .line
     }
 }
 

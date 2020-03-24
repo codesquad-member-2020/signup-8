@@ -14,6 +14,7 @@
 		A590F4832428D36400293531 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A590F4822428D36400293531 /* Assets.xcassets */; };
 		A590F4862428D36400293531 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A590F4842428D36400293531 /* LaunchScreen.storyboard */; };
 		A590F4912428D36400293531 /* SignupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590F4902428D36400293531 /* SignupTests.swift */; };
+		A5CA8AA12429DF8200F204E6 /* UIExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CA8AA02429DF8200F204E6 /* UIExtenstion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		A590F48C2428D36400293531 /* SignupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A590F4902428D36400293531 /* SignupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTests.swift; sourceTree = "<group>"; };
 		A590F4922428D36400293531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5CA8AA02429DF8200F204E6 /* UIExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtenstion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				A590F4822428D36400293531 /* Assets.xcassets */,
 				A590F4842428D36400293531 /* LaunchScreen.storyboard */,
 				A590F4872428D36400293531 /* Info.plist */,
+				A5CA8AA02429DF8200F204E6 /* UIExtenstion.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				A590F47E2428D36000293531 /* ViewController.swift in Sources */,
 				A590F47A2428D36000293531 /* AppDelegate.swift in Sources */,
 				A590F47C2428D36000293531 /* SceneDelegate.swift in Sources */,
+				A5CA8AA12429DF8200F204E6 /* UIExtenstion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
