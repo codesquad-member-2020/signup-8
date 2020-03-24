@@ -17,9 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet var labels: [UILabel]!
     
+    private let idTextFieldDelegate = IDTextFieldDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setDelegate()
     }
     
     private func setUI() {
@@ -31,6 +34,10 @@ class ViewController: UIViewController {
         labels.forEach{
             $0.alpha = 0
         }
+    }
+    
+    private func setDelegate() {
+        IDTextField.delegate = idTextFieldDelegate
     }
 }
 

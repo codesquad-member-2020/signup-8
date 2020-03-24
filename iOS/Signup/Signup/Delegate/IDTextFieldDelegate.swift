@@ -9,6 +9,16 @@
 import UIKit
 
 class IDTextFieldDelegate: NSObject, UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let length = textField.text?.count ?? 0
+        
+        if length < 5 {
+            textField.setBorder(color: .red, width: 1)
+        } else if length > 20 {
+            textField.setBorder(color: .red, width: 1)
+        } else {
+            textField.setBorder(color: .gray, width: 1)
+        }
+        return true
     }
 }
