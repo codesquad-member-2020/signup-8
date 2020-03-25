@@ -42,6 +42,10 @@ class StatusLabel: UILabel {
                                                object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func changeText(status: Status) {
         text = status.rawValue
         alpha = 1
