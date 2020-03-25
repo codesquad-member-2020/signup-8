@@ -27,25 +27,24 @@ class NetworkHandler {
             guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 return
             }
-        
+            
             guard let jsonToArray = try? JSONSerialization.jsonObject(with: data, options: []) else {
                 print("json to Any Error")
                 
                 return
             }
-            print(jsonToArray)
+            
             guard let json = jsonToArray as? [String:Bool] else {return}
             if let state = json["isValid"] {
-                NotificationCenter.default.post(name: .resultFromServer,
-                                                object: self,
-                                                userInfo: ["state" : state])
+                NotificationCenter.default.post(name: .borderColor,
+                                                object: nil,
+                                                userInfo: ["borderColor" : state ? SignUpTextField.BorderColor.Green : SignUpTextField.BorderColor.Red])
+                NotificationCenter.default.post(name: .isValidID,
+                                                object: nil,
+                                                userInfo: ["labelState": state ? StatusLabel.State.OK : StatusLabel.State.DuplicateID])
             }
         }
         
         dataTask.resume()
     }
-}
-
-extension Notification.Name {
-    static let resultFromServer = Notification.Name("resultFromServer")
 }
