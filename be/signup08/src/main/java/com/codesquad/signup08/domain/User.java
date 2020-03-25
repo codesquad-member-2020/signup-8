@@ -91,6 +91,10 @@ public class User {
         this.agreement = agreement;
     }
 
+    public boolean matchPassword(String inputPassword) {
+        return this.password.equals(inputPassword);
+    }
+
     @Override
     public String toString() {
         return "User{" +
