@@ -14,23 +14,19 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
-    public String moveToHome() {
-        return "/home";
-    }
-
-    @GetMapping("/users/join/form")
+    @GetMapping("/join/form")
     public String moveJoinForm() {
         return "/join";
     }
 
-    @PostMapping("/users")
+    @PostMapping("")
     public String join(User user) {
         log.debug("UserId : {}", user);
         userRepository.save(user);
