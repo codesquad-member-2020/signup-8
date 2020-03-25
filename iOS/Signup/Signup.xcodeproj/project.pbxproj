@@ -19,6 +19,7 @@
 		A5CA8AA12429DF8200F204E6 /* UIExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CA8AA02429DF8200F204E6 /* UIExtenstion.swift */; };
 		A5CA8AAC242A0EF500F204E6 /* IDTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CA8AAB242A0EF500F204E6 /* IDTextFieldDelegate.swift */; };
 		A5CDE7C1242B491200214EC4 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDE7C0242B491200214EC4 /* NetworkHandler.swift */; };
+		A5CDE7C3242B4B3E00214EC4 /* SignupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDE7C2242B4B3E00214EC4 /* SignupTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		A5CA8AA02429DF8200F204E6 /* UIExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtenstion.swift; sourceTree = "<group>"; };
 		A5CA8AAB242A0EF500F204E6 /* IDTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTextFieldDelegate.swift; sourceTree = "<group>"; };
 		A5CDE7C0242B491200214EC4 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		A5CDE7C2242B4B3E00214EC4 /* SignupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				A590F47F2428D36000293531 /* Main.storyboard */,
 				A590F4842428D36400293531 /* LaunchScreen.storyboard */,
 				A58D82C7242B1B2800DAB416 /* StatusLabel.swift */,
+				A5CDE7C2242B4B3E00214EC4 /* SignupTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CDE7C3242B4B3E00214EC4 /* SignupTextField.swift in Sources */,
 				A590F47E2428D36000293531 /* ViewController.swift in Sources */,
 				A5CA8AAC242A0EF500F204E6 /* IDTextFieldDelegate.swift in Sources */,
 				A58D82C6242B18F000DAB416 /* StringExtension.swift in Sources */,
