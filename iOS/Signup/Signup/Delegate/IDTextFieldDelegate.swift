@@ -9,21 +9,27 @@
 import UIKit
 
 class IDTextFieldDelegate: NSObject, UITextFieldDelegate {
+    
+    private let serverURL = "http://www.mocky.io/v2/5e7b121a2d00002b00119be2"
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let length = textField.text?.count ?? 0
+        guard let IDTextField = textField as? SignUpTextField else {return}
+        
+        let length = IDTextField.text?.count ?? 0
         
         if length < 5 {
-            textField.setBorder(color: UIColor(named: "Red") ?? .red, width: 1)
+            
             postNotification(status: .ShortLength)
         } else if length > 20 {
-            textField.setBorder(color: UIColor(named: "Red") ?? .red, width: 1)
+            IDTextField.borderColor = .Red
             postNotification(status: .LongLength)
         } else {
             if textField.text!.validateID() {
-                textField.setBorder(color: UIColor(named: "Green") ?? .systemGreen, width: 1)
+                IDTextField.borderColor = .Green
                 postNotification(status: .OK)
+                NetworkHandler.request(resource: serverURL)
             } else {
-                textField.setBorder(color: UIColor(named: "Red") ?? .red, width: 1)
+                IDTextField.borderColor = .Red
                 postNotification(status: .InvalidID)
             }
         }
