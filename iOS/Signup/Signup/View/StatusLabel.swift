@@ -27,6 +27,7 @@ class StatusLabel: UILabel {
     override init(frame: CGRect) {
         status = .Normal
         super.init(frame: frame)
+        alpha = 0
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(isValid(_:)),
                                                name: .isValidID,
@@ -36,6 +37,7 @@ class StatusLabel: UILabel {
     required init?(coder: NSCoder) {
         status = .Normal
         super.init(coder: coder)
+        alpha = 0
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(isValid(_:)),
                                                name: .isValidID,
