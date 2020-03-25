@@ -51,11 +51,11 @@ class StatusLabel: UILabel {
         alpha = 1
         switch status {
         case .DuplicateID,.InvalidID,.LongLength,.ShortLength:
-            textColor = .red
+            textColor = UIColor(named: "Red") ?? .red
         case .Normal:
-            textColor = .gray
+            textColor = UIColor(named: "Gray") ?? .gray
         case .OK:
-            textColor = .systemGreen
+            textColor = UIColor(named: "Green") ?? .systemGreen
         }
     }
     

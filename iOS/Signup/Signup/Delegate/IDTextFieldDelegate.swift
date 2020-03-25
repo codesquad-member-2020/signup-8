@@ -13,22 +13,22 @@ class IDTextFieldDelegate: NSObject, UITextFieldDelegate {
         let length = textField.text?.count ?? 0
         
         if length < 5 {
-            textField.setBorder(color: .red, width: 1)
+            textField.setBorder(color: UIColor(named: "Red") ?? .red, width: 1)
             postNotification(status: .ShortLength)
         } else if length > 20 {
-            textField.setBorder(color: .red, width: 1)
+            textField.setBorder(color: UIColor(named: "Red") ?? .red, width: 1)
             postNotification(status: .LongLength)
         } else {
             if textField.text!.validateID() {
-                textField.setBorder(color: .systemGreen, width: 1)
+                textField.setBorder(color: UIColor(named: "Green") ?? .systemGreen, width: 1)
                 postNotification(status: .OK)
             } else {
-                textField.setBorder(color: .red, width: 1)
+                textField.setBorder(color: UIColor(named: "Red") ?? .red, width: 1)
                 postNotification(status: .InvalidID)
             }
         }
     }
-    
+
     func postNotification(status: StatusLabel.Status) {
         NotificationCenter.default.post(name: .isValidID,
                                         object: nil,

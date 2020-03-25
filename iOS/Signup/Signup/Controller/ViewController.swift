@@ -26,11 +26,11 @@ class ViewController: UIViewController {
     }
     
     private func setUI() {
-        IDTextField.setBorder(color: .gray, width: 1)
-        passwordTextField.setBorder(color: .gray, width: 1)
-        passwordConfirmTextField.setBorder(color: .gray, width: 1)
-        nameTextField.setBorder(color: .gray, width: 1)
-        nextButton.setBorder(color: .gray, width: 1)
+        IDTextField.setBorder(color: UIColor(named: "Gray") ?? .gray, width: 1)
+        passwordTextField.setBorder(color: UIColor(named: "Gray") ?? .gray, width: 1)
+        passwordConfirmTextField.setBorder(color: UIColor(named: "Gray") ?? .gray, width: 1)
+        nameTextField.setBorder(color: UIColor(named: "Gray") ?? .gray, width: 1)
+        nextButton.setBorder(color: UIColor(named: "Gray") ?? .gray, width: 1)
         labels.forEach{
             $0.alpha = 0
         }
