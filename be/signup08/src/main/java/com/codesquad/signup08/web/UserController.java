@@ -5,13 +5,12 @@ import com.codesquad.signup08.domain.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDate;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
-@RestController
+@Controller
 public class UserController {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
@@ -19,17 +18,20 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/")
-    public String main() {
-        User user = new User("pengsoo", "1234", "팽수", LocalDate.now(), "male", "pangsoo@test.com", "010-1111-2222", new String[]{"보드", "영화"}, "true");
-        userRepository.save(user);
-        try {
-
-            User newUser = userRepository.findById((long) 1).orElseThrow(() -> new Exception());
-            log.debug("user : {}", user);
-            log.debug("newUser : {}", newUser);
-        } catch (Exception e) {
-            log.debug("error!!");
-        }
+    public String moveToHome() {
         return "/home";
     }
+
+    @GetMapping("/users/join/form")
+    public String moveJoinForm() {
+        return "/join";
+    }
+
+    @PostMapping("/users")
+    public String join(User user) {
+        log.debug("UserId : {}", user);
+        userRepository.save(user);
+        return "redirect:/";
+    }
+
 }
