@@ -20,7 +20,7 @@ class StatusLabel: UILabel {
     
     private var state: State {
         didSet {
-            changeText(status: state)
+            changeText(state: state)
         }
     }
     
@@ -48,22 +48,24 @@ class StatusLabel: UILabel {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func changeText(status: State) {
-        text = status.rawValue
-        alpha = 1
-        switch status {
-        case .DuplicateID,.InvalidID,.LongLength,.ShortLength:
-            textColor = UIColor(named: "Red") ?? .red
-        case .Normal:
-            textColor = UIColor(named: "Gray") ?? .gray
-        case .OK:
-            textColor = UIColor(named: "Green") ?? .systemGreen
+    private func changeText(state: State) {
+        DispatchQueue.main.async {
+            self.text = state.rawValue
+            self.alpha = 1
+            switch state {
+            case .DuplicateID,.InvalidID,.LongLength,.ShortLength:
+                self.textColor = UIColor(named: "Red") ?? .red
+            case .Normal:
+                self.textColor = UIColor(named: "Gray") ?? .gray
+            case .OK:
+                self.textColor = UIColor(named: "Green") ?? .systemGreen
+            }
         }
     }
     
     @objc func isValid(_ notification: Notification) {
         if let info: [String : State] = notification.userInfo as? [String : State] {
-            state = info["state"] ?? State.Normal
+            state = info["labelState"] ?? State.Normal
         }
     }
 }
