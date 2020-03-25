@@ -35,11 +35,17 @@ class NetworkHandler {
             }
             print(jsonToArray)
             guard let json = jsonToArray as? [String:Bool] else {return}
-            if let status = json["isValid"] {
-                print(status)
+            if let state = json["isValid"] {
+                NotificationCenter.default.post(name: .resultFromServer,
+                                                object: self,
+                                                userInfo: ["state" : state])
             }
         }
         
         dataTask.resume()
     }
+}
+
+extension Notification.Name {
+    static let resultFromServer = Notification.Name("resultFromServer")
 }
