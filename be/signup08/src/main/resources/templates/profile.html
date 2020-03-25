@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<div class="contents">
+    <!-- <div class="profile"> -->
+    <div class="join">
+        <div class="title">
+            <h2>PROFILE</h2>
+        </div>
+        <div>
+            {{#currentUser}}
+            <table>
+                <tbody>
+                <tr>
+                    <th scope="row">UserId</th>
+                    <td>{{userId}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">이름</th>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">생년월일</th>
+                    <td>{{birthday}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">성별</th>
+                    <td>{{gender}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">이메일</th>
+                    <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">휴대 전화</th>
+                    <td>{{phoneNumber}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">관심</th>
+                    <td>{{interest}}</td>
+                </tr>
+                </tbody>
+            </table>
+            {{/currentUser}}
+        </div>R
+    </div>
+</div>
+
+</body>
+</html>
