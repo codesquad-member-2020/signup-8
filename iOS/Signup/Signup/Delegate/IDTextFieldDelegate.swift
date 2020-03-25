@@ -10,40 +10,43 @@ import UIKit
 
 class IDTextFieldDelegate: NSObject, UITextFieldDelegate {
     
-    private let serverURL = "http://www.mocky.io/v2/5e7b121a2d00002b00119be2"
+    private let serverURL = "http://www.mocky.io/v2/5e7b54482d00006100119f28"
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let IDTextField = textField as? SignUpTextField else {return}
-        
-        let length = IDTextField.text?.count ?? 0
+        let length = textField.text?.count ?? 0
         
         if length < 5 {
-            
-            postNotification(state: .ShortLength)
+            postBorderColorNotifcation(state: .Red)
+            postLabelStatusNotification(state: .ShortLength)
         } else if length > 20 {
-            IDTextField.borderColor = .Red
-            postNotification(state: .LongLength)
+            postBorderColorNotifcation(state: .Red)
+            postLabelStatusNotification(state: .LongLength)
         } else {
             if textField.text!.validateID() {
-                IDTextField.borderColor = .Green
-                postNotification(state: .OK)
                 NetworkHandler.request(resource: serverURL)
             } else {
-                IDTextField.borderColor = .Red
-                postNotification(state: .InvalidID)
+                postBorderColorNotifcation(state: .Red)
+                postLabelStatusNotification(state: .InvalidID)
             }
         }
     }
 
-    func postNotification(state: StatusLabel.State) {
+    func postLabelStatusNotification(state: StatusLabel.State) {
         NotificationCenter.default.post(name: .isValidID,
                                         object: nil,
-                                        userInfo: ["state" : state])
+                                        userInfo: ["labelState" : state])
+    }
+    
+    func postBorderColorNotifcation(state: SignUpTextField.BorderColor) {
+        NotificationCenter.default.post(name: .borderColor,
+                                        object: nil,
+                                        userInfo: ["borderColor" : state])
     }
 }
 
 extension Notification.Name {
     static let isValidID = Notification.Name("isValidID")
+    static let borderColor = Notification.Name("borderColor")
 }
 
 
