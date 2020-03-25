@@ -9,7 +9,8 @@ body {
   margin: auto;
 }
 
-#join-form {
+#join-form,
+#login-form {
   width: 460px;
 }
 
@@ -145,6 +146,13 @@ span.ps_box.int_favor.box_right_space {
   color: #fff;
   background-color: #03c75a;
   width: 49%;
+  height: 50px;
+}
+
+.btn_login {
+  color: #fff;
+  background-color: #03c75a;
+  width: 100%;
   height: 50px;
 }
 
