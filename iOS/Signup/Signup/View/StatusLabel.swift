@@ -9,7 +9,7 @@
 import UIKit
 
 class StatusLabel: UILabel {
-    enum Status: String {
+    enum State: String {
         case LongLength = "ID는 20글자 이하여야 합니다."
         case ShortLength = "ID는 5글자 이상이어야 합니다."
         case InvalidID = "영문 소문자, 숫자, 특수기호(_, -)를 사용해야합니다."
@@ -18,14 +18,14 @@ class StatusLabel: UILabel {
         case Normal
     }
     
-    private var status: Status {
+    private var state: State {
         didSet {
-            changeText(status: status)
+            changeText(status: state)
         }
     }
     
     override init(frame: CGRect) {
-        status = .Normal
+        state = .Normal
         super.init(frame: frame)
         alpha = 0
         NotificationCenter.default.addObserver(self,
@@ -35,7 +35,7 @@ class StatusLabel: UILabel {
     }
     
     required init?(coder: NSCoder) {
-        status = .Normal
+        state = .Normal
         super.init(coder: coder)
         alpha = 0
         NotificationCenter.default.addObserver(self,
@@ -48,7 +48,7 @@ class StatusLabel: UILabel {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func changeText(status: Status) {
+    private func changeText(status: State) {
         text = status.rawValue
         alpha = 1
         switch status {
@@ -62,8 +62,8 @@ class StatusLabel: UILabel {
     }
     
     @objc func isValid(_ notification: Notification) {
-        if let info: [String : Status] = notification.userInfo as? [String : Status] {
-            status = info["status"] ?? Status.Normal
+        if let info: [String : State] = notification.userInfo as? [String : State] {
+            state = info["state"] ?? State.Normal
         }
     }
 }

@@ -19,26 +19,26 @@ class IDTextFieldDelegate: NSObject, UITextFieldDelegate {
         
         if length < 5 {
             
-            postNotification(status: .ShortLength)
+            postNotification(state: .ShortLength)
         } else if length > 20 {
             IDTextField.borderColor = .Red
-            postNotification(status: .LongLength)
+            postNotification(state: .LongLength)
         } else {
             if textField.text!.validateID() {
                 IDTextField.borderColor = .Green
-                postNotification(status: .OK)
+                postNotification(state: .OK)
                 NetworkHandler.request(resource: serverURL)
             } else {
                 IDTextField.borderColor = .Red
-                postNotification(status: .InvalidID)
+                postNotification(state: .InvalidID)
             }
         }
     }
 
-    func postNotification(status: StatusLabel.Status) {
+    func postNotification(state: StatusLabel.State) {
         NotificationCenter.default.post(name: .isValidID,
                                         object: nil,
-                                        userInfo: ["status" : status])
+                                        userInfo: ["state" : state])
     }
 }
 
