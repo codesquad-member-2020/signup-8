@@ -71,7 +71,7 @@ body {
 }
 
 span.ps_box.int_favor.box_right_space {
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   align-content: center;
   align-items: center;

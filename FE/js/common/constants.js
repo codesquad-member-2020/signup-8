@@ -2,7 +2,12 @@ import { qs$ } from "../common/util.js";
 
 export const inputContainer = qs$(".container");
 export const tagContainer = qs$(".ps_box.int_favor");
-export const input = qs$(".int_favor input");
+export const favorInput = qs$(".int_favor input");
+
+export const KEYCODE = {
+  BACKSPACE: 8,
+  COMMA: 188
+};
 
 export const VALID_REGEX = {
   ID: /^[a-z0-9][a-z0-9_\-]{5,20}$/,
