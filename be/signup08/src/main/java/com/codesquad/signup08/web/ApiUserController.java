@@ -57,20 +57,22 @@ public class ApiUserController {
 
     @ResponseBody
     @GetMapping("/api")
-    public HashMap<String, Object> viewProfile(HttpSession session) {
+    public ResponseEntity<HashMap<String, Object>> viewProfile(HttpSession session) {
         log.debug("[*] session getId : {}", session.getId());
         HashMap<String, Object> responseMap = new HashMap<>();
         if (!HttpSessionUtils.isLoginUser(session)) {
             final String NOT_LOGINED_MESSAGE = "로그인이 필요합니다.";
             responseMap.put("result", new ResponseResult(false, NOT_LOGINED_MESSAGE));
-            return responseMap;
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(responseMap);
         }
 
         User sessionUser = HttpSessionUtils.getUserFromSession(session);
         final String NOT_FOUND_USER = "회원 정보가 존재하지 않습니다.";
         User profileUser = userRepository.findByUserId(sessionUser.getUserId()).orElseThrow(() -> new NotFoundUserException(NOT_FOUND_USER));
         responseMap.put("result", profileUser);
-        return responseMap;
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(responseMap);
     }
 
     @ExceptionHandler
