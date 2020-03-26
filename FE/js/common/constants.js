@@ -4,6 +4,11 @@ export const inputContainer = qs$(".container");
 export const tagContainer = qs$(".ps_box.int_favor");
 export const favorInput = qs$(".int_favor input");
 
+export const favorMsg = qs$("#favorMsg");
+
+export const EMPTY_STR = "";
+export const MIN_TAG_CNT = 3;
+
 export const KEYCODE = {
   BACKSPACE: 8,
   COMMA: 188
