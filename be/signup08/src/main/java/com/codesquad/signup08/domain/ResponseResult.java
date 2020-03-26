@@ -24,4 +24,12 @@ public class ResponseResult {
     public static ResponseResult fail(String errorMessage) {
         return new ResponseResult(false, errorMessage);
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "valid=" + valid +
+                ", errorMessage='" + errorMessage + '\'' +
+                '}';
+    }
 }

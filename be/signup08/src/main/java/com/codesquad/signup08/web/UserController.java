@@ -1,12 +1,13 @@
 package com.codesquad.signup08.web;
 
-import com.codesquad.signup08.domain.User;
 import com.codesquad.signup08.domain.UserRepository;
 import com.codesquad.signup08.exception.NotFoundUserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,16 @@ public class UserController {
     @GetMapping("/login/form")
     public String moveLoginForm() { return "/login"; }
 
-        }
 
-        return "redirect:/";
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.removeAttribute("sessionUser");
+        session.invalidate();
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location", "/");
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .headers(responseHeaders)
+                .body("<html><body>You are being redirected</body></html>");
     }
 
     @ExceptionHandler

@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.conversion.DbActionExecutionException;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -44,6 +43,13 @@ public class ApiUserController {
 
         session.setAttribute(HttpSessionUtils.USER_SESSION_KEY, sessionUser);
         log.debug("Login Success!");
+        return new ResponseResult(true, null);
+    }
+
+    @PostMapping("/api/logout")
+    public ResponseResult logoutApi(HttpSession session) {
+        session.removeAttribute("sessionUser");
+        session.invalidate();
         return new ResponseResult(true, null);
     }
 
