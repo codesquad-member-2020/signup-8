@@ -3,6 +3,7 @@ import { qs$ } from "../common/util.js";
 export const inputContainer = qs$(".container");
 export const tagContainer = qs$(".ps_box.int_favor");
 export const favorInput = qs$(".int_favor input");
+export const pswd1Input = qs$("input#pswd1");
 
 export const MSG_CONTAINER = {
   ID: qs$("#idMsg"),
@@ -18,6 +19,7 @@ export const favorMsg = qs$("#favorMsg");
 export const EMPTY_STR = "";
 export const DEL_BTN = "I";
 export const MIN_TAG_CNT = 3;
+export const SUCCESS_COLOR = "green";
 
 export const KEYCODE = {
   BACKSPACE: 8,
@@ -26,7 +28,13 @@ export const KEYCODE = {
 
 export const VALID_REGEX = {
   ID: /^[a-z0-9][a-z0-9_\-]{5,20}$/,
-  PSWD: /^[A-Za-z0-9`\-=\\\[\];',\./~!@#\$%\^&\*\(\)_\+|\{\}:"<>\?]{8,16}$/,
+  PSWD: {
+    LEN: /.{8,16}$/,
+    ENG_UP: /^(?=.*[A-Z])/,
+    ENG_DOWN: /^(?=.*[a-z])/,
+    NUMBER: /\d/,
+    CHARACTOR: /\W+/
+  },
   EMAIL: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   P_NUM: /^010\d{3,4}\d{4}$/
 };

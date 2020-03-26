@@ -1,12 +1,67 @@
-const checkId = () => {};
+import {
+  VALID_REGEX,
+  MSG_CONTAINER,
+  SUCCESS_COLOR,
+  ID_MSG,
+  PSWD1_MSG,
+  PSWD1_INVALID_CASE,
+  PSWD2_MSG,
+  BIRTH_ERR_MSG,
+  EMAIL_ERR_MSG,
+  PHONE_ERR_MSG,
+  pswd1Input
+} from "../common/constants.js";
+import { isValid, addMsg, addClass, removeClass } from "../common/util.js";
 
-const isValidId = () => {};
+const checkInputName = ({ id, value }) => {
+  switch (id) {
+    case "id":
+      checkId(value);
+      break;
+    case "pswd1":
+      checkPswd1(value);
+      break;
+    case "pswd2":
+      checkPswd2(value);
+      break;
+    case "yy":
+      checkBirth(value);
+      break;
+    case "email":
+      checkEmail(value);
+      break;
+    case "tel":
+      checkPhoneNo(value);
+    default:
+      break;
+  }
+};
 
-const isUniqueId = () => {};
+const checkId = id => {
+  if (!isValid(VALID_REGEX.ID, id)) {
+    removeClass(MSG_CONTAINER.ID, SUCCESS_COLOR);
+    addMsg(MSG_CONTAINER.ID, ID_MSG.INVALID);
+    return;
+  }
 
-const checkPswd1 = () => {};
+  if (!isUniqueId(id)) {
+    removeClass(MSG_CONTAINER.ID, SUCCESS_COLOR);
+    addMsg(MSG_CONTAINER.ID, ID_MSG.OVERLAP);
+    return;
+  }
 
-const checkPswd2 = () => {};
+  addClass(MSG_CONTAINER.ID, SUCCESS_COLOR);
+  addMsg(MSG_CONTAINER.ID, ID_MSG.SUCCESS);
+};
+
+const isUniqueId = id => {
+  // 중복검사 임시코드
+  return true;
+};
+
+const checkPswd1 = pswd => {};
+
+const checkPswd2 = pswd2 => {};
 
 const isEqualPswd = () => {};
 
@@ -22,11 +77,4 @@ const checkPhoneNo = () => {};
 
 const isValidPhoneNo = () => {};
 
-const checkFormInfos = () => {
-  checkId();
-  checkPswd1();
-  checkPswd2();
-  checkBirth();
-  checkEmail();
-  checkPhoneNo();
-};
+export { checkInputName };
