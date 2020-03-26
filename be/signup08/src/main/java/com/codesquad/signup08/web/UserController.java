@@ -1,5 +1,6 @@
 package com.codesquad.signup08.web;
 
+import com.codesquad.signup08.domain.User;
 import com.codesquad.signup08.domain.UserRepository;
 import com.codesquad.signup08.exception.NotFoundUserException;
 import org.slf4j.Logger;
@@ -31,6 +32,20 @@ public class UserController {
     @GetMapping("/login/form")
     public String moveLoginForm() { return "/login"; }
 
+    @GetMapping("")
+    public String viewProfile(Model model, HttpSession session) {
+        log.debug("[*] session getId : {}", session.getId());
+        if (!HttpSessionUtils.isLoginUser(session)) {
+            final String NOT_LOGINED_MESSAGE = "로그인이 필요합니다.";
+            model.addAttribute("errorMessage", NOT_LOGINED_MESSAGE);
+            return "/error";
+        }
+
+        User sessionUser = HttpSessionUtils.getUserFromSession(session);
+        final String NOT_FOUND_USER = "회원 정보가 존재하지 않습니다.";
+        model.addAttribute("currentUser", userRepository.findByUserId(sessionUser.getUserId()).orElseThrow(() -> new NotFoundUserException(NOT_FOUND_USER)));
+        return "/profile";
+    }
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpSession session) {

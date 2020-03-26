@@ -9,9 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.conversion.DbActionExecutionException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/users")
@@ -53,6 +55,24 @@ public class ApiUserController {
         return new ResponseResult(true, null);
     }
 
+    @ResponseBody
+    @GetMapping("/api")
+    public HashMap<String, Object> viewProfile(HttpSession session) {
+        log.debug("[*] session getId : {}", session.getId());
+        HashMap<String, Object> responseMap = new HashMap<>();
+        if (!HttpSessionUtils.isLoginUser(session)) {
+            final String NOT_LOGINED_MESSAGE = "로그인이 필요합니다.";
+            responseMap.put("result", new ResponseResult(false, NOT_LOGINED_MESSAGE));
+            return responseMap;
+        }
+
+        User sessionUser = HttpSessionUtils.getUserFromSession(session);
+        final String NOT_FOUND_USER = "회원 정보가 존재하지 않습니다.";
+        User profileUser = userRepository.findByUserId(sessionUser.getUserId()).orElseThrow(() -> new NotFoundUserException(NOT_FOUND_USER));
+        responseMap.put("result", profileUser);
+        return responseMap;
+    }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     private ResponseResult catchBadRequestException(DbActionExecutionException e) {
@@ -67,4 +87,5 @@ public class ApiUserController {
         log.debug("[*] {}", e.getMessage());
         return new ResponseResult(false, e.getMessage());
     }
+
 }
