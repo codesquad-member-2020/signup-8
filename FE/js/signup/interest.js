@@ -5,6 +5,7 @@ import {
   favorMsg,
   KEYCODE,
   EMPTY_STR,
+  DEL_BTN,
   MIN_TAG_CNT,
   FAVOR_ERR_MSG
 } from "../common/constants.js";
@@ -16,22 +17,16 @@ const createTag = label => {
 };
 
 const clearTags = () => {
-  qsAll$(".tag").forEach(tag => {
-    tag.parentElement.removeChild(tag);
-  });
+  qsAll$(".tag").forEach(tag => tag.parentElement.removeChild(tag));
 };
 
 const deleteTag = ({ target }) => {
-  if (target.tagName === "I") {
+  if (target.tagName === DEL_BTN) {
     const tagLabel = target.getAttribute("data-item");
     const index = tags.indexOf(tagLabel);
     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
     addTags();
-  } else if (
-    event.keyCode === KEYCODE.BACKSPACE &&
-    favorInput.value === EMPTY_STR &&
-    tags.length > 0
-  ) {
+  } else if (isBackspaceKeyUpEvent()) {
     const inputString = tags.pop();
     addTags();
     favorInput.value = inputString;
@@ -42,10 +37,12 @@ const addTags = () => {
   clearTags();
 
   let tagsHTML = EMPTY_STR;
-  tags.slice().forEach(tag => {
-    tagsHTML += createTag(tag);
-  });
+  tags.slice().forEach(tag => (tagsHTML += createTag(tag)));
   tagContainer.insertAdjacentHTML("afterbegin", tagsHTML);
+};
+
+const isBackspaceKeyUpEvent = () => {
+  return event.keyCode === KEYCODE.BACKSPACE && favorInput.value === EMPTY_STR && tags.length > 0;
 };
 
 const keyupCommaEvent = ({ target }) => {
@@ -76,7 +73,10 @@ const registerKeyUpEventListener = () => {
     deleteTag(event);
     checkTagCount(event);
   });
-  tagContainer.addEventListener("click", deleteTag);
+  tagContainer.addEventListener("click", event => {
+    deleteTag(event);
+    checkTagCount(event);
+  });
 };
 
 export { registerKeyUpEventListener };
