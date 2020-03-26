@@ -30,20 +30,8 @@ public class UserController {
     @GetMapping("/login/form")
     public String moveLoginForm() { return "/login"; }
 
-    @PostMapping("/login")
-    public String login(String userId, String password, HttpSession session) {
-        log.debug("userId : {}, password : {}", userId, password);
-        final String ERROR_MESSAGE = "회원 정보가 존재하지 않습니다.";
-        User sessionUser = userRepository.findByUserId(userId).orElseThrow(() -> new NotFoundUserException(ERROR_MESSAGE));
-        log.debug("sessionser : {}", sessionUser);
-
-        if(!sessionUser.matchPassword(password)) {
-            log.debug("password not match");
-            return "redirect:/users/login/form";
         }
 
-        log.debug("Login Success!");
-        session.setAttribute(HttpSessionUtils.USER_SESSION_KEY, sessionUser);
         return "redirect:/";
     }
 
