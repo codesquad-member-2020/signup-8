@@ -1,4 +1,4 @@
-import { qsAll$ } from "../common/util.js";
+import { qsAll$, addMsg } from "../common/util.js";
 import {
   tagContainer,
   favorInput,
@@ -60,11 +60,11 @@ const keyupCommaEvent = ({ target }) => {
 
 const checkTagCount = () => {
   if (tags.length >= MIN_TAG_CNT) {
-    favorMsg.innerText = EMPTY_STR;
+    addMsg(favorMsg, EMPTY_STR);
     return;
   }
 
-  favorMsg.innerText = FAVOR_ERR_MSG;
+  addMsg(favorMsg, FAVOR_ERR_MSG);
 };
 
 const registerKeyUpEventListener = () => {
