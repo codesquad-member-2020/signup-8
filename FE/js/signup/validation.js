@@ -39,14 +39,12 @@ const checkInputName = ({ id, value }) => {
 
 const checkId = id => {
   if (!isValid(VALID_REGEX.ID, id)) {
-    removeClass(MSG_CONTAINER.ID, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.ID, ID_MSG.INVALID);
+    showErrMsg(MSG_CONTAINER.ID, ID_MSG.INVALID);
     return;
   }
 
   if (!isUniqueId(id)) {
-    removeClass(MSG_CONTAINER.ID, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.ID, ID_MSG.OVERLAP);
+    showErrMsg(MSG_CONTAINER.ID, ID_MSG.OVERLAP);
     return;
   }
 
