@@ -9,7 +9,7 @@
 import Foundation
 
 class NetworkHandler {
-    class func request(resource: String){
+    class func request(resource: String, handlder: @escaping (Any) -> Void){
         let defaultSession = URLSession(configuration: .default)
         guard let url = URL(string: resource) else {
             return
@@ -34,15 +34,7 @@ class NetworkHandler {
                 return
             }
             
-            guard let json = jsonToArray as? [String:Bool] else {return}
-            if let state = json["isValid"] {
-                NotificationCenter.default.post(name: .borderColor,
-                                                object: nil,
-                                                userInfo: ["borderColor" : state ? SignUpTextField.BorderColor.Green : SignUpTextField.BorderColor.Red])
-                NotificationCenter.default.post(name: .isValidID,
-                                                object: nil,
-                                                userInfo: ["labelState": state ? StatusLabel.State.OK : StatusLabel.State.DuplicateID])
-            }
+            handlder(jsonToArray)
         }
         
         dataTask.resume()
