@@ -79,8 +79,8 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String[] getInterest() {
-        return interest;
+    public String getInterest() {
+        return Arrays.toString(interest);
     }
 
     public void setInterest(String[] interest) {
