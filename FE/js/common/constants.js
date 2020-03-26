@@ -4,9 +4,19 @@ export const inputContainer = qs$(".container");
 export const tagContainer = qs$(".ps_box.int_favor");
 export const favorInput = qs$(".int_favor input");
 
+export const MSG_CONTAINER = {
+  ID: qs$("#idMsg"),
+  PSWD: qs$("#pswdMsg"),
+  PSWD2: qs$("#pswd2Msg"),
+  BIRTH: qs$("#birthMsg"),
+  GENDER: qs$("#genderMsg"),
+  EMAIL: qs$("#emailMsg"),
+  P_NUM: qs$("#pNumMsg")
+};
 export const favorMsg = qs$("#favorMsg");
 
 export const EMPTY_STR = "";
+export const DEL_BTN = "I";
 export const MIN_TAG_CNT = 3;
 
 export const KEYCODE = {
@@ -52,9 +62,7 @@ export const BIRTH_ERR_MSG = {
 };
 
 export const EMAIL_ERR_MSG = "이메일 주소를 다시 확인해주세요.";
-
 export const PHONE_ERR_MSG = "형식에 맞지 않는 번호입니다.";
-
 export const FAVOR_ERR_MSG = "3개 이상의 관심사를 입력하세요.";
 
-const today = new Date();
+export const TODAY = new Date();
