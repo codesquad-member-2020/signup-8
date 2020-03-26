@@ -1,5 +1,13 @@
 import { qsAll$ } from "../common/util.js";
-import { tagContainer, favorInput, KEYCODE } from "../common/constants.js";
+import {
+  tagContainer,
+  favorInput,
+  favorMsg,
+  KEYCODE,
+  EMPTY_STR,
+  MIN_TAG_CNT,
+  FAVOR_ERR_MSG
+} from "../common/constants.js";
 
 let tags = [];
 
@@ -19,7 +27,11 @@ const deleteTag = ({ target }) => {
     const index = tags.indexOf(tagLabel);
     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
     addTags();
-  } else if (event.keyCode === KEYCODE.BACKSPACE && favorInput.value === "" && tags.length > 0) {
+  } else if (
+    event.keyCode === KEYCODE.BACKSPACE &&
+    favorInput.value === EMPTY_STR &&
+    tags.length > 0
+  ) {
     const inputString = tags.pop();
     addTags();
     favorInput.value = inputString;
@@ -29,29 +41,41 @@ const deleteTag = ({ target }) => {
 const addTags = () => {
   clearTags();
 
-  let tagsHTML = "";
+  let tagsHTML = EMPTY_STR;
   tags.slice().forEach(tag => {
     tagsHTML += createTag(tag);
   });
   tagContainer.insertAdjacentHTML("afterbegin", tagsHTML);
 };
 
-const onKeyUpEvent = ({ target }) => {
+const keyupCommaEvent = ({ target }) => {
   const targetValue = target.value.slice(0, -1);
 
   if (targetValue.includes(",")) {
-    favorInput.value = "";
+    favorInput.value = EMPTY_STR;
   } else if (event.keyCode === KEYCODE.COMMA && targetValue.length > 0) {
     tags.push(targetValue);
 
     addTags();
-    favorInput.value = "";
+    favorInput.value = EMPTY_STR;
   }
 };
 
+const checkTagCount = () => {
+  if (tags.length >= MIN_TAG_CNT) {
+    favorMsg.innerText = EMPTY_STR;
+    return;
+  }
+
+  favorMsg.innerText = FAVOR_ERR_MSG;
+};
+
 const registerKeyUpEventListener = () => {
-  favorInput.addEventListener("keyup", onKeyUpEvent);
-  favorInput.addEventListener("keyup", deleteTag);
+  favorInput.addEventListener("keyup", event => {
+    keyupCommaEvent(event);
+    deleteTag(event);
+    checkTagCount(event);
+  });
   tagContainer.addEventListener("click", deleteTag);
 };
 
