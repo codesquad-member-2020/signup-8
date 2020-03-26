@@ -11,7 +11,7 @@ import {
   PHONE_ERR_MSG,
   pswd1Input
 } from "../common/constants.js";
-import { isValid, addMsg, addClass, removeClass } from "../common/util.js";
+import { isValid, addMsg, addClass, removeClass, showErrMsg } from "../common/util.js";
 
 const checkInputName = ({ id, value }) => {
   switch (id) {
@@ -61,32 +61,27 @@ const isUniqueId = id => {
 
 const checkPswd1 = pswd => {
   if (!isValid(VALID_REGEX.PSWD.LEN, pswd)) {
-    removeClass(MSG_CONTAINER.PSWD, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.PSWD, PSWD1_MSG.INVALID_LEN);
+    showErrMsg(MSG_CONTAINER.PSWD, PSWD1_MSG.INVALID_LEN);
     return;
   }
 
   if (!isValid(VALID_REGEX.PSWD.ENG_UP, pswd)) {
-    removeClass(MSG_CONTAINER.PSWD, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.ENG_UP + PSWD1_MSG.INVALID);
+    showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.ENG_UP + PSWD1_MSG.INVALID);
     return;
   }
 
   if (!isValid(VALID_REGEX.PSWD.ENG_DOWN, pswd)) {
-    removeClass(MSG_CONTAINER.PSWD, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.ENG_DOWN + PSWD1_MSG.INVALID);
+    showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.ENG_DOWN + PSWD1_MSG.INVALID);
     return;
   }
 
   if (!isValid(VALID_REGEX.PSWD.NUMBER, pswd)) {
-    removeClass(MSG_CONTAINER.PSWD, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.NUMBER + PSWD1_MSG.INVALID);
+    showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.NUMBER + PSWD1_MSG.INVALID);
     return;
   }
 
   if (!isValid(VALID_REGEX.PSWD.CHARACTOR, pswd)) {
-    removeClass(MSG_CONTAINER.PSWD, SUCCESS_COLOR);
-    addMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.CHARACTOR + PSWD1_MSG.INVALID);
+    showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.CHARACTOR + PSWD1_MSG.INVALID);
     return;
   }
 
