@@ -9,7 +9,11 @@
 import UIKit
 
 class InterestViewController: UIViewController {
-
+    
+    @IBAction func previousButtonPushed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

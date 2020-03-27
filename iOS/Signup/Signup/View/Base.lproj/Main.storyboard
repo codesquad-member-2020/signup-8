@@ -464,6 +464,7 @@
                                 <connections>
                                     <action selector="nextButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhv-GY-8Dt"/>
                                     <action selector="previousButtonPushed:" destination="Ct8-Hd-HFm" eventType="touchUpInside" id="2nf-tW-QrQ"/>
+                                    <action selector="previousButtonPushed:" destination="e9C-tc-sqB" eventType="touchUpInside" id="7EV-d6-m1I"/>
                                 </connections>
                             </button>
                         </subviews>
