@@ -23,7 +23,9 @@ class IDTextFieldDelegate: NSObject, UITextFieldDelegate {
             postLabelStatusNotification(state: .LongLength)
         } else {
             if textField.text!.validateID() {
-                NetworkHandler.request(resource: serverURL)
+                NetworkHandler.request(resource: serverURL){
+                    debugPrint($0)
+                }
             } else {
                 postBorderColorNotifcation(state: .Red)
                 postLabelStatusNotification(state: .InvalidID)
