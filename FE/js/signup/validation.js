@@ -12,6 +12,7 @@ import {
   pswd1Input
 } from "../common/constants.js";
 import { isValid, addMsg, addClass, removeClass, showErrMsg } from "../common/util.js";
+import { fetchRequest } from "../common/fetchReq.js";
 
 const checkInputName = ({ id, value }) => {
   switch (id) {
@@ -53,8 +54,14 @@ const checkId = id => {
 };
 
 const isUniqueId = id => {
-  // 중복검사 임시코드
-  return true;
+  const data = { userId: id };
+
+  fetchRequest("/api/duplicate", data)
+    .then(response => response.json())
+    .then(suggestionData => {
+      console.log(suggestionData);
+      return suggestionData;
+    });
 };
 
 const checkPswd1 = pswd => {
