@@ -1,23 +1,42 @@
 package com.codesquad.signup08.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 public class User {
     @Id
+    @JsonIgnore
     private Long id;
+
     private String userId;
+
+    @JsonIgnore
     private String password;
+
     private String name;
+
     private LocalDate birthday;
+
     private String gender;
+
     private String email;
+
     private String phoneNumber;
-    private String[] interest;
+
+    private String interest;
+
+    @JsonIgnore
     private String agreement;
+
+    private LocalDateTime createdDateTime;
+
+    public User() {
+        createdDateTime = LocalDateTime.now();
+    }
 
     public Long getId() {
         return id;
@@ -47,9 +66,9 @@ public class User {
         this.name = name;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
-    }
+//    public LocalDate getBirthday() {
+//        return birthday;
+//    }
 
     public void setBirthday(String birthday) {
         this.birthday = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
@@ -80,10 +99,10 @@ public class User {
     }
 
     public String getInterest() {
-        return Arrays.toString(interest);
+        return interest;
     }
 
-    public void setInterest(String[] interest) {
+    public void setInterest(String interest) {
         this.interest = interest;
     }
 
@@ -110,7 +129,7 @@ public class User {
                 ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", interest=" + Arrays.toString(interest) +
+                ", interest=" + interest +
                 ", agreement=" + agreement +
                 '}';
     }
