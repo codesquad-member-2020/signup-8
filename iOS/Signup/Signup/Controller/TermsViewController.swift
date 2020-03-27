@@ -15,6 +15,7 @@ class TermsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         termsTextView.delegate = termTextViewDelegate
+        termsTextView.isEditable = false
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(showAlert(_:)),
                                                name: .reachBottom,
