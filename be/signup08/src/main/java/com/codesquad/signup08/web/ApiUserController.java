@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class ApiUserController {
     private static final Logger log = LoggerFactory.getLogger(ApiUserController.class);
 
@@ -48,46 +48,22 @@ public class ApiUserController {
         return new ResponseResult(true, null);
     }
 
-    @PostMapping("/api/logout")
+    @PostMapping("/logout")
     public ResponseResult logoutApi(HttpSession session) {
         session.removeAttribute("sessionUser");
         session.invalidate();
         return new ResponseResult(true, null);
     }
 
-    @ResponseBody
-    @GetMapping("/api")
-    public ResponseEntity<HashMap<String, Object>> viewProfile(HttpSession session) {
+    @GetMapping("")
+    public User viewProfile(HttpSession session) {
         log.debug("[*] session getId : {}", session.getId());
-        HashMap<String, Object> responseMap = new HashMap<>();
-        if (!HttpSessionUtils.isLoginUser(session)) {
+        if (HttpSessionUtils.isNotLoginUser(session)) {
             final String NOT_LOGINED_MESSAGE = "로그인이 필요합니다.";
-            responseMap.put("result", new ResponseResult(false, NOT_LOGINED_MESSAGE));
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(responseMap);
+            throw new NotFoundUserException(NOT_LOGINED_MESSAGE);
         }
 
-        User sessionUser = HttpSessionUtils.getUserFromSession(session);
-        final String NOT_FOUND_USER = "회원 정보가 존재하지 않습니다.";
-        User profileUser = userRepository.findByUserId(sessionUser.getUserId()).orElseThrow(() -> new NotFoundUserException(NOT_FOUND_USER));
-        responseMap.put("result", profileUser);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(responseMap);
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    private ResponseResult catchBadRequestException(DbActionExecutionException e) {
-        log.debug("[*] {}", e.getMessage());
-        final String BAD_REQUEST_MESSAGE = "잘못된 요청입니다.";
-        return new ResponseResult(false, BAD_REQUEST_MESSAGE);
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    private ResponseResult catchNotFoundUserException(NotFoundUserException e) {
-        log.debug("[*] {}", e.getMessage());
-        return new ResponseResult(false, e.getMessage());
+        return HttpSessionUtils.getUserFromSession(session);
     }
 
 }

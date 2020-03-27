@@ -1,7 +1,9 @@
 package com.codesquad.signup08.web;
 
+import com.codesquad.signup08.domain.ResponseResult;
 import com.codesquad.signup08.domain.User;
 import com.codesquad.signup08.domain.UserRepository;
+import com.codesquad.signup08.exception.IncorrectInputException;
 import com.codesquad.signup08.exception.NotFoundUserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +31,39 @@ public class UserController {
         return "/join";
     }
 
+    @PostMapping("")
+    public ResponseEntity<String> join(User user) {
+        log.debug("UserId : {}", user);
+        userRepository.save(user);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location", "/");
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .headers(responseHeaders)
+                .body("success");
+    }
+
     @GetMapping("/login/form")
     public String moveLoginForm() { return "/login"; }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(String userId, String password, HttpSession session) {
+        log.debug("userId : {}, password : {}", userId, password);
+        final String NOT_FOUND_USER = "회원 정보가 존재하지 않습니다.";
+        User sessionUser = userRepository.findByUserId(userId).orElseThrow(() -> new NotFoundUserException(NOT_FOUND_USER));
+        log.debug("sessionser : {}", sessionUser);
+
+        if(sessionUser.isDifferentPassword(password)) {
+            throw new IncorrectInputException();
+        }
+
+        session.setAttribute(HttpSessionUtils.USER_SESSION_KEY, sessionUser);
+        log.debug("Login Success!");
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Location", "/");
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .headers(responseHeaders)
+                .body("success");
+    }
 
     @GetMapping("")
     public String viewProfile(Model model, HttpSession session) {
