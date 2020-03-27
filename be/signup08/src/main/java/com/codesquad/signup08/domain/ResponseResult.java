@@ -9,20 +9,12 @@ public class ResponseResult {
         this.errorMessage = errorMessage;
     }
 
-    public boolean isValid() {
+    public boolean getValid() {
         return valid;
     }
 
     public String getErrorMessage() {
         return errorMessage;
-    }
-
-    public static ResponseResult ok() {
-        return new ResponseResult(true, null);
-    }
-
-    public static ResponseResult fail(String errorMessage) {
-        return new ResponseResult(false, errorMessage);
     }
 
     @Override

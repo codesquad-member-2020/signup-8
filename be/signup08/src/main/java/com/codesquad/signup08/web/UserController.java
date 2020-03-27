@@ -35,7 +35,7 @@ public class UserController {
     @GetMapping("")
     public String viewProfile(Model model, HttpSession session) {
         log.debug("[*] session getId : {}", session.getId());
-        if (!HttpSessionUtils.isLoginUser(session)) {
+        if (HttpSessionUtils.isNotLoginUser(session)) {
             final String NOT_LOGINED_MESSAGE = "로그인이 필요합니다.";
             model.addAttribute("errorMessage", NOT_LOGINED_MESSAGE);
             return "/error";
@@ -56,14 +56,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .headers(responseHeaders)
                 .body("<html><body>You are being redirected</body></html>");
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    private String catchNotFoundUserException(Model model, NotFoundUserException e) {
-        log.debug("[*] {}", e.getMessage());
-        model.addAttribute("errorMessage", e.getMessage());
-        return "/error";
     }
 
 }

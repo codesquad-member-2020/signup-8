@@ -14,40 +14,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/duplicate")
 public class ApiDuplicateController {
     private static final Logger log = LoggerFactory.getLogger(ApiDuplicateController.class);
+    static final String DUPLICATED_MESSAGE = "중복입니다.";
+    static final String NOT_DUPLICATED_MESSAGE = "중복이 아닙니다.";
 
     @Autowired
     private UserRepository userRepository;
 
     @RequestMapping("")
-    public boolean isDuplicatedUser(@RequestParam(required = false) String userId, @RequestParam(required = false) String email, @RequestParam(required = false) String phoneNumber) {
+    public ResponseResult isDuplicatedUser(@RequestParam(required = false) String userId, @RequestParam(required = false) String email, @RequestParam(required = false) String phoneNumber) {
+        boolean isDuplicated = false;
+
         if (userId != null) {
-            return isDuplicatedUserId(userId);
+            isDuplicated = isDuplicatedUserId(userId);
         }
 
         if (email != null) {
-            return isDuplicatedEmail(email);
+            isDuplicated = isDuplicatedEmail(email);
         }
 
         if (phoneNumber != null) {
-            return isDuplicatedPhoneNumber(phoneNumber);
+            isDuplicated = isDuplicatedPhoneNumber(phoneNumber);
         }
 
-        return false;
+        return isDuplicated ? new ResponseResult(true, DUPLICATED_MESSAGE) : new ResponseResult(false, NOT_DUPLICATED_MESSAGE);
     }
 
     private boolean isDuplicatedUserId(String userId) {
-        int existedUser = userRepository.countUserByUserId(userId);
-        return existedUser == 0 ? false : true;
+        return userRepository.countUserByUserId(userId) != 0;
     }
 
     private boolean isDuplicatedEmail(String email) {
-        int existedUser = userRepository.countUserByEmail(email);
-        return existedUser == 0 ? false : true;
+        return userRepository.countUserByEmail(email) != 0;
     }
 
     private boolean isDuplicatedPhoneNumber(String phoneNumber) {
-        int existedUser = userRepository.countUserByPhoneNumber(phoneNumber);
-        return existedUser == 0 ? false : true;
+        return userRepository.countUserByPhoneNumber(phoneNumber) != 0;
     }
 
 }

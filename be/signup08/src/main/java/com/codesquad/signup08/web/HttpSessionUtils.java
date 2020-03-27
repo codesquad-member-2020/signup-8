@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 public class HttpSessionUtils {
     public static final String USER_SESSION_KEY = "sessionUser";
 
-    public static boolean isLoginUser(HttpSession session) {
+    public static boolean isNotLoginUser(HttpSession session) {
         Object sessionUser = session.getAttribute(USER_SESSION_KEY);
-        return sessionUser != null;
+        return sessionUser == null;
     }
 
     public static User getUserFromSession(HttpSession session) {

@@ -110,12 +110,8 @@ public class User {
         this.agreement = agreement;
     }
 
-    public boolean matchUserId(String inputUserId) {
-        return this.userId.equals(inputUserId);
-    }
-
-    public boolean matchPassword(String inputPassword) {
-        return this.password.equals(inputPassword);
+    public boolean isDifferentPassword(String inputPassword) {
+        return !password.equals(inputPassword);
     }
 
     @Override

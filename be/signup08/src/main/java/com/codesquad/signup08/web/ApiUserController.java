@@ -37,7 +37,7 @@ public class ApiUserController {
         User sessionUser = userRepository.findByUserId(userId).orElseThrow(() -> new NotFoundUserException(NOT_FOUND_USER));
         log.debug("sessionser : {}", sessionUser);
 
-        if(!sessionUser.matchPassword(password)) {
+        if(sessionUser.isDifferentPassword(password)) {
             final String NOT_MATCH_PASSWORD_MESSAGE = "비밀번호가 일치하지 않습니다.";
             log.debug("[*] error message : {}", NOT_MATCH_PASSWORD_MESSAGE);
             return new ResponseResult(false, NOT_MATCH_PASSWORD_MESSAGE);
