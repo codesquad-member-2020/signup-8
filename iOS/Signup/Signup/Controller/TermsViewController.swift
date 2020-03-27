@@ -25,8 +25,11 @@ class TermsViewController: UIViewController {
     @objc func showAlert(_ notification: Notification) {
         let actionSheet = UIAlertController()
         let agreeAction = UIAlertAction(title: "동의", style: .default) { _ in
-            
+            let interestViewController = self.storyboard!.instantiateViewController(identifier: "InterestViewController")
+            interestViewController.modalPresentationStyle = .fullScreen
+            self.present(interestViewController, animated: true)
         }
+        
         agreeAction.setValue(UIColor(named: "Green"), forKey: "titleTextColor")
         actionSheet.addAction(agreeAction)
         
