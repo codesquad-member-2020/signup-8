@@ -15,6 +15,10 @@ class PersonalInformationViewController: UIViewController {
     @IBAction func previousButtonPushed(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    @IBAction func nextButtonPushed(_ sender: UIButton) {
+        let termsViewController = self.storyboard!.instantiateViewController(identifier: "TermsViewController")
+        present(termsViewController, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

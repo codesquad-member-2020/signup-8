@@ -22,6 +22,8 @@
 		A5CDE7C3242B4B3E00214EC4 /* SignupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDE7C2242B4B3E00214EC4 /* SignupTextField.swift */; };
 		A5D6BD25242D99C50061EFD6 /* PersonalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD24242D99C50061EFD6 /* PersonalInformationViewController.swift */; };
 		A5D6BD27242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD26242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift */; };
+		A5D6BD29242DCDEC0061EFD6 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD28242DCDEC0061EFD6 /* TermsViewController.swift */; };
+		A5D6BD2B242DD1710061EFD6 /* TermTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD2A242DD1710061EFD6 /* TermTextViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		A5CDE7C2242B4B3E00214EC4 /* SignupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextField.swift; sourceTree = "<group>"; };
 		A5D6BD24242D99C50061EFD6 /* PersonalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewController.swift; sourceTree = "<group>"; };
 		A5D6BD26242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayTextFieldDelegate.swift; sourceTree = "<group>"; };
+		A5D6BD28242DCDEC0061EFD6 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		A5D6BD2A242DD1710061EFD6 /* TermTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTextViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				A590F47B2428D36000293531 /* SceneDelegate.swift */,
 				A5CA8AAB242A0EF500F204E6 /* IDTextFieldDelegate.swift */,
 				A5D6BD26242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift */,
+				A5D6BD2A242DD1710061EFD6 /* TermTextViewDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			children = (
 				A590F47D2428D36000293531 /* SignupViewController.swift */,
 				A5D6BD24242D99C50061EFD6 /* PersonalInformationViewController.swift */,
+				A5D6BD28242DCDEC0061EFD6 /* TermsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,7 +279,9 @@
 				A58D82C8242B1B2800DAB416 /* StatusLabel.swift in Sources */,
 				A5D6BD27242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift in Sources */,
 				A590F47C2428D36000293531 /* SceneDelegate.swift in Sources */,
+				A5D6BD2B242DD1710061EFD6 /* TermTextViewDelegate.swift in Sources */,
 				A5CA8AA12429DF8200F204E6 /* UIExtenstion.swift in Sources */,
+				A5D6BD29242DCDEC0061EFD6 /* TermsViewController.swift in Sources */,
 				A5CDE7C1242B491200214EC4 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
