@@ -11,7 +11,7 @@
         <!--Signup View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignupViewController" customModule="Signup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="BYZ-38-t0r" customClass="SignupViewController" customModule="Signup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,6 +125,9 @@
                                 <state key="normal" title=" 다음" image="greaterthan.circle.fill" catalog="system">
                                     <color key="titleColor" name="Green"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X92-Wo-ZIy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -159,7 +162,7 @@
         <!--Personal Information View Controller-->
         <scene sceneID="C53-vX-eDl">
             <objects>
-                <viewController id="Ct8-Hd-HFm" customClass="PersonalInformationViewController" customModule="Signup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalInformationViewController" id="Ct8-Hd-HFm" customClass="PersonalInformationViewController" customModule="Signup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LSc-00-oIe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
