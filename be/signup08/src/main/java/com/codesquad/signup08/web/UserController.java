@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping("/join/form")
     public String moveJoinForm() {
-        return "/join";
+        return "/signup";
     }
 
     @PostMapping("")

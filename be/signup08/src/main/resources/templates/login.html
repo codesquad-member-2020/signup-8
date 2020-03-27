@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<h3>로그인</h3>
-<form action="/users/login" method="POST">
-        <table>
-            <tbody><tr>
-                <td><input type="text" name="userId" placeholder="ID"></td>
-            </tr>
-            <tr>
-                <td><input type="password" name="password" placeholder="PASSWORD"></td>
-            </tr>
-
-
-
-            </tbody></table>
-    <input type="submit" value="로그인">
-</form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/reset.css" />
+    <link rel="stylesheet" href="/style/form.css" />
+    <title>로그인</title>
+  </head>
+  <body>
+    <div id="header" role="banner">
+      <h1 class="join_membership"><a href="/" class="signup_header">홈으로</a></h1>
+    </div>
+    <div class="wrap">
+      <form action="/users/login" id="login-form" method="POST">
+        <div class="container">
+          <div class="form-content">
+            <h3 class="join_title"><label for="id">아이디</label></h3>
+            <span class="ps_box int_id">
+              <input type="text" id="id" name="userId" class="int" title="ID" maxlength="20" />
+            </span>
+          </div>
+          <div class="form-content">
+            <h3 class="join_title"><label for="password">비밀번호</label></h3>
+            <span class="ps_box int_pass" id="pswd1Img">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="int"
+                title="비밀번호 입력"
+                maxlength="20"
+              />
+            </span>
+          </div>
+          <div class="btn_area">
+            <button type="submit" id="btnJoin" class="btn_type btn_login">
+              <span>로그인</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>
