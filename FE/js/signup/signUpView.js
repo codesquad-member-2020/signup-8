@@ -1,5 +1,6 @@
 import { inputContainer } from "../common/constants.js";
 import { addClass, removeClass } from "../common/util.js";
+import { checkInputName } from "./validation.js";
 
 const registerFocusListener = () => {
   inputContainer.addEventListener("click", ({ target }) => {
@@ -7,9 +8,10 @@ const registerFocusListener = () => {
       addClass(target.parentElement, "focus");
     }
   });
-  inputContainer.addEventListener("focusout", ({ target }) =>
-    removeClass(target.parentElement, "focus")
-  );
+  inputContainer.addEventListener("focusout", ({ target }) => {
+    removeClass(target.parentElement, "focus");
+    checkInputName(target);
+  });
 };
 
 export { registerFocusListener };

@@ -2,11 +2,39 @@ import { qs$ } from "../common/util.js";
 
 export const inputContainer = qs$(".container");
 export const tagContainer = qs$(".ps_box.int_favor");
-export const input = qs$(".int_favor input");
+export const favorInput = qs$(".int_favor input");
+export const pswd1Input = qs$("input#pswd1");
+
+export const MSG_CONTAINER = {
+  ID: qs$("#idMsg"),
+  PSWD: qs$("#pswdMsg"),
+  PSWD2: qs$("#pswd2Msg"),
+  BIRTH: qs$("#birthMsg"),
+  GENDER: qs$("#genderMsg"),
+  EMAIL: qs$("#emailMsg"),
+  P_NUM: qs$("#pNumMsg")
+};
+export const favorMsg = qs$("#favorMsg");
+
+export const EMPTY_STR = "";
+export const DEL_BTN = "I";
+export const MIN_TAG_CNT = 3;
+export const SUCCESS_COLOR = "green";
+
+export const KEYCODE = {
+  BACKSPACE: 8,
+  COMMA: 188
+};
 
 export const VALID_REGEX = {
   ID: /^[a-z0-9][a-z0-9_\-]{5,20}$/,
-  PSWD: /^[A-Za-z0-9`\-=\\\[\];',\./~!@#\$%\^&\*\(\)_\+|\{\}:"<>\?]{8,16}$/,
+  PSWD: {
+    LEN: /.{8,16}$/,
+    ENG_UP: /^(?=.*[A-Z])/,
+    ENG_DOWN: /^(?=.*[a-z])/,
+    NUMBER: /\d/,
+    CHARACTOR: /\W+/
+  },
   EMAIL: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   P_NUM: /^010\d{3,4}\d{4}$/
 };
@@ -42,9 +70,7 @@ export const BIRTH_ERR_MSG = {
 };
 
 export const EMAIL_ERR_MSG = "이메일 주소를 다시 확인해주세요.";
-
 export const PHONE_ERR_MSG = "형식에 맞지 않는 번호입니다.";
-
 export const FAVOR_ERR_MSG = "3개 이상의 관심사를 입력하세요.";
 
-const today = new Date();
+export const TODAY = new Date();
