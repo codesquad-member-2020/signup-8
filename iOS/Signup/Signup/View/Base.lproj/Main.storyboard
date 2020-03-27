@@ -317,6 +317,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qIJ-Mx-wq8"/>
                     </view>
+                    <connections>
+                        <outlet property="birthTextField" destination="jxi-FR-ClO" id="i6l-Fl-vSr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrf-en-5Ie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

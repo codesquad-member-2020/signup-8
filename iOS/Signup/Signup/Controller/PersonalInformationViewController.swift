@@ -9,12 +9,15 @@
 import UIKit
 
 class PersonalInformationViewController: UIViewController {
-
+    @IBOutlet weak var birthTextField: SignUpTextField!
+    let birthDelegate = BirthdayTextFieldDelegate()
+    
     @IBAction func previousButtonPushed(_ sender: UIButton) {
         dismiss(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        birthTextField.delegate = birthDelegate
     }
 }
