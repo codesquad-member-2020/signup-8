@@ -1,5 +1,5 @@
 import {
-  VALID_REGEX,
+  REG,
   MSG_CONTAINER,
   SUCCESS_COLOR,
   ID_MSG,
@@ -39,15 +39,15 @@ const checkInputName = ({ id, value }) => {
 };
 
 const checkId = id => {
-  if (!isValid(VALID_REGEX.ID, id)) {
+  if (!isValid(REG.ID, id)) {
     showErrMsg(MSG_CONTAINER.ID, ID_MSG.INVALID);
     return;
   }
 
-  if (!isUniqueId(id)) {
-    showErrMsg(MSG_CONTAINER.ID, ID_MSG.OVERLAP);
-    return;
-  }
+  // if (!isUniqueId(id)) {
+  //   showErrMsg(MSG_CONTAINER.ID, ID_MSG.OVERLAP);
+  //   return;
+  // }
 
   addClass(MSG_CONTAINER.ID, SUCCESS_COLOR);
   addMsg(MSG_CONTAINER.ID, ID_MSG.SUCCESS);
@@ -65,27 +65,27 @@ const isUniqueId = id => {
 };
 
 const checkPswd1 = pswd => {
-  if (!isValid(VALID_REGEX.PSWD.LEN, pswd)) {
+  if (!isValid(REG.PSWD_LEN, pswd)) {
     showErrMsg(MSG_CONTAINER.PSWD, PSWD1_MSG.INVALID_LEN);
     return;
   }
 
-  if (!isValid(VALID_REGEX.PSWD.ENG_UP, pswd)) {
+  if (!isValid(REG.UPPER_CASE, pswd)) {
     showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.ENG_UP + PSWD1_MSG.INVALID);
     return;
   }
 
-  if (!isValid(VALID_REGEX.PSWD.ENG_DOWN, pswd)) {
+  if (!isValid(REG.DOWN_CASE, pswd)) {
     showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.ENG_DOWN + PSWD1_MSG.INVALID);
     return;
   }
 
-  if (!isValid(VALID_REGEX.PSWD.NUMBER, pswd)) {
+  if (!isValid(REG.NUMBER, pswd)) {
     showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.NUMBER + PSWD1_MSG.INVALID);
     return;
   }
 
-  if (!isValid(VALID_REGEX.PSWD.CHARACTOR, pswd)) {
+  if (!isValid(REG.CHARACTOR, pswd)) {
     showErrMsg(MSG_CONTAINER.PSWD, PSWD1_INVALID_CASE.CHARACTOR + PSWD1_MSG.INVALID);
     return;
   }
