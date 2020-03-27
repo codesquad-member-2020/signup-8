@@ -24,6 +24,7 @@
 		A5D6BD27242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD26242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift */; };
 		A5D6BD29242DCDEC0061EFD6 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD28242DCDEC0061EFD6 /* TermsViewController.swift */; };
 		A5D6BD2B242DD1710061EFD6 /* TermTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD2A242DD1710061EFD6 /* TermTextViewDelegate.swift */; };
+		A5D6BD2D242DDC9F0061EFD6 /* InterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D6BD2C242DDC9F0061EFD6 /* InterestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		A5D6BD26242DA8770061EFD6 /* BirthdayTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayTextFieldDelegate.swift; sourceTree = "<group>"; };
 		A5D6BD28242DCDEC0061EFD6 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		A5D6BD2A242DD1710061EFD6 /* TermTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTextViewDelegate.swift; sourceTree = "<group>"; };
+		A5D6BD2C242DDC9F0061EFD6 /* InterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				A590F47D2428D36000293531 /* SignupViewController.swift */,
 				A5D6BD24242D99C50061EFD6 /* PersonalInformationViewController.swift */,
 				A5D6BD28242DCDEC0061EFD6 /* TermsViewController.swift */,
+				A5D6BD2C242DDC9F0061EFD6 /* InterestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				A590F47E2428D36000293531 /* SignupViewController.swift in Sources */,
 				A5CA8AAC242A0EF500F204E6 /* IDTextFieldDelegate.swift in Sources */,
 				A58D82C6242B18F000DAB416 /* StringExtension.swift in Sources */,
+				A5D6BD2D242DDC9F0061EFD6 /* InterestViewController.swift in Sources */,
 				A590F47A2428D36000293531 /* AppDelegate.swift in Sources */,
 				A5D6BD25242D99C50061EFD6 /* PersonalInformationViewController.swift in Sources */,
 				A58D82C8242B1B2800DAB416 /* StatusLabel.swift in Sources */,
