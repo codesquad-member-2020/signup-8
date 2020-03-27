@@ -18,7 +18,7 @@ export const favorMsg = qs$("#favorMsg");
 
 export const EMPTY_STR = "";
 export const DEL_BTN = "I";
-export const MIN_TAG_CNT = 3;
+export const MIN_TAG_COUNT = 3;
 export const SUCCESS_COLOR = "green";
 
 export const KEYCODE = {
@@ -26,15 +26,13 @@ export const KEYCODE = {
   COMMA: 188
 };
 
-export const VALID_REGEX = {
+export const REG = {
   ID: /^[a-z0-9][a-z0-9_\-]{5,20}$/,
-  PSWD: {
-    LEN: /.{8,16}$/,
-    ENG_UP: /^(?=.*[A-Z])/,
-    ENG_DOWN: /^(?=.*[a-z])/,
-    NUMBER: /\d/,
-    CHARACTOR: /\W+/
-  },
+  PSWD_LEN: /.{8,16}$/,
+  UPPER_CASE: /^(?=.*[A-Z])/,
+  DOWN_CASE: /^(?=.*[a-z])/,
+  NUMBER: /\d/,
+  CHARACTOR: /\W+/,
   EMAIL: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   P_NUM: /^010\d{3,4}\d{4}$/
 };

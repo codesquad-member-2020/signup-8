@@ -6,7 +6,7 @@ import {
   KEYCODE,
   EMPTY_STR,
   DEL_BTN,
-  MIN_TAG_CNT,
+  MIN_TAG_COUNT,
   FAVOR_ERR_MSG
 } from "../common/constants.js";
 
@@ -59,7 +59,7 @@ const keyupCommaEvent = ({ target }) => {
 };
 
 const checkTagCount = () => {
-  if (tags.length >= MIN_TAG_CNT) {
+  if (tags.length >= MIN_TAG_COUNT) {
     addMsg(favorMsg, EMPTY_STR);
     return;
   }
