@@ -24,9 +24,11 @@ class TermsViewController: UIViewController {
     
     @objc func showAlert(_ notification: Notification) {
         let actionSheet = UIAlertController()
-        actionSheet.addAction(UIAlertAction(title: "동의", style: .default, handler: { result in
+        let agreeAction = UIAlertAction(title: "동의", style: .default) { _ in
             
-        }))
+        }
+        agreeAction.setValue(UIColor(named: "Green"), forKey: "titleTextColor")
+        actionSheet.addAction(agreeAction)
         
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         
