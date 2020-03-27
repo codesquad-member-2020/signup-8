@@ -325,6 +325,21 @@
             </objects>
             <point key="canvasLocation" x="972" y="130"/>
         </scene>
+        <!--Terms View Controller-->
+        <scene sceneID="ng1-yu-WEh">
+            <objects>
+                <viewController id="QNA-Jv-iUZ" customClass="TermsViewController" customModule="Signup" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pyd-xP-C99">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="NTy-ma-Ryf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n6X-68-dDi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1807" y="127"/>
+        </scene>
     </scenes>
     <resources>
         <image name="greaterthan.circle.fill" catalog="system" width="128" height="121"/>
