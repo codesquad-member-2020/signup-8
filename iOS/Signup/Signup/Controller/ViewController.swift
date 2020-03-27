@@ -17,20 +17,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet var labels: [UILabel]!
     
+    private let idTextFieldDelegate = IDTextFieldDelegate()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setDelegate()
     }
     
-    private func setUI() {
-        IDTextField.setBorder(color: .gray, width: 1)
-        passwordTextField.setBorder(color: .gray, width: 1)
-        passwordConfirmTextField.setBorder(color: .gray, width: 1)
-        nameTextField.setBorder(color: .gray, width: 1)
-        nextButton.setBorder(color: .gray, width: 1)
-        labels.forEach{
-            $0.alpha = 0
-        }
+    private func setDelegate() {
+        IDTextField.delegate = idTextFieldDelegate
     }
 }
 
