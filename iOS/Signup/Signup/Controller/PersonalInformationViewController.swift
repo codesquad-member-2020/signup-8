@@ -10,6 +10,10 @@ import UIKit
 
 class PersonalInformationViewController: UIViewController {
 
+    @IBAction func previousButtonPushed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

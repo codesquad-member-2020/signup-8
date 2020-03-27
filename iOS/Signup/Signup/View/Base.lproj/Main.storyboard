@@ -298,6 +298,7 @@
                                 </state>
                                 <connections>
                                     <action selector="nextButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lbj-XV-8Yr"/>
+                                    <action selector="previousButtonPushed:" destination="Ct8-Hd-HFm" eventType="touchUpInside" id="yFx-vp-ogy"/>
                                 </connections>
                             </button>
                         </subviews>
