@@ -30,7 +30,9 @@ class TermsViewController: UIViewController {
         agreeAction.setValue(UIColor(named: "Green"), forKey: "titleTextColor")
         actionSheet.addAction(agreeAction)
         
-        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel){ _ in
+            self.dismiss(animated: true)
+        })
         
         self.present(actionSheet, animated: true, completion: nil)
     }
