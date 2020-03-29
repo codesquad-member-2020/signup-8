@@ -32,10 +32,10 @@ public class User {
     @JsonIgnore
     private String agreement;
 
-    private LocalDateTime createdDateTime;
+    private LocalDate createdDate;
 
     public User() {
-        createdDateTime = LocalDateTime.now();
+        createdDate = LocalDate.now();
     }
 
     public Long getId() {
@@ -66,9 +66,9 @@ public class User {
         this.name = name;
     }
 
-//    public LocalDate getBirthday() {
-//        return birthday;
-//    }
+    public LocalDate getBirthday() {
+        return birthday;
+    }
 
     public void setBirthday(String birthday) {
         this.birthday = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
